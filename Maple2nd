@@ -1,0 +1,52 @@
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+if key == ";" then                
+_G.AutoTP = true
+_G.AutoTools = true
+_G.DisableXP = true
+
+if _G.DisableXP == true then
+game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = true
+else
+game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = false
+end
+
+spawn (function()
+while _G.AutoTools == true do wait()
+if game.Players.LocalPlayer.Backpack:FindFirstChild("opalAxe") then
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["opalAxe"])
+end 
+end
+end)
+spawn (function()
+while _G.AutoTP == true do
+_G.Item = "treeMaple"
+local islandBlockFolder = game:GetService("Workspace").Islands:FindFirstChildOfClass("Model").Blocks -- just set this as a variable so is cleanrer
+local client = game.Players.LocalPlayer
+game:GetService("RunService").Heartbeat:Connect(function()
+if _G.AutoTP == false then return end
+client.Character.Humanoid:ChangeState(11)
+end)
+while wait(1) do
+if _G.AutoTP == false then return end
+for i,v in pairs(islandBlockFolder:GetChildren()) do
+if string.find(v.Name,_G.Item) then
+repeat if _G.AutoTP == false then break end
+pcall(function() -- Doesn't break the script if there is an error
+client.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
+end)
+pcall(function()
+game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged.CLIENT_BLOCK_HIT_REQUEST:InvokeServer({["player_tracking_category"] = "join_from_web",["part"] = v:FindFirstChildOfClass("MeshPart"),["block"] = v,["norm"] = v.CFrame, ["pos"] = v.CFrame})
+end)
+until not v or v.Parent == nil or _G.AutoTP == false
+end
+end
+end
+end
+end) 
+else
+if key == "," then
+_G.AutoTP = false
+_G.AutoTools = false
+_G.DisableXP = false
+end
+end)
