@@ -9,7 +9,7 @@ game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
 end)
 
 spawn (function()
-    if _G.AutoMaple == true then wait(120)            
+    if _G.AutoMaple == true then wait()            
         _G.AutoTP = true
         _G.AutoTools = true
         _G.DisableXP = true
@@ -118,7 +118,7 @@ spawn (function()
 end)
 
 spawn (function()
-    if _G.LowGraphics == true then wait(180)
+    if _G.LowGraphics == true then wait()
     local decalsyeeted = true
     local g = game
     local w = g.Workspace
