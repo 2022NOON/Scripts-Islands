@@ -1,7 +1,6 @@
     _G.AutoMaple = true
     _G.RejoinWhenKick = true
     _G.AntiAFK = true
-    _G.AutoKick = true
     _G.LowGraphics = true
 
     spawn (function()
@@ -110,23 +109,6 @@
             VirtualUser:CaptureController()
             VirtualUser:ClickButton2(Vector2.new())
             end)
-        end
-    end)
-
-    spawn (function()
-        while _G.AutoKick == true do
-        local TpService = game:GetService("TeleportService")
-        local player = game.Players.LocalPlayer
-        
-        if game.placeId == 4872321990 then
-        wait(7200)
-            TpService:Teleport(7620160503,player)
-        end
-
-        if game.placeId == 7620160503 then
-        wait(60)
-            TpService:Teleport(4872321990,player)
-        end
         end
     end)
 
