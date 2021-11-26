@@ -1,0 +1,173 @@
+    _G.AutoMaple = true
+    _G.RejoinWhenKick = true
+    _G.AntiAFK = true
+    _G.AutoKick = true
+    _G.LowGraphics = true
+
+    spawn (function()
+        if _G.AutoMaple == true then wait(120)            
+            _G.AutoTP = true
+            _G.AutoTools = true
+            _G.DisableXP = true
+            
+            spawn (function()
+            if _G.DisableXP == true then
+            game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = true
+            else
+            game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = false
+            end
+            end)
+
+            spawn (function()
+            local noclip = true
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            while true do
+            player = game.Players.LocalPlayer
+            character = player.Character
+            if noclip then
+            for _, v in pairs(character:GetDescendants()) do
+            pcall(function()
+            if v:IsA("BasePart") then
+            v.CanCollide = false
+            end
+            end)
+            end
+            end
+            game:GetService("RunService").Stepped:wait()
+            end
+            end)
+
+            spawn (function()
+            while _G.AutoTools == true do wait()
+            if game.Players.LocalPlayer.Backpack:FindFirstChild("opalAxe") then
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["opalAxe"])
+            end 
+            end
+            end)
+            spawn (function()
+            while _G.AutoTP == true do
+            _G.Item = "treeMaple"
+            local islandBlockFolder = game:GetService("Workspace").Islands:FindFirstChildOfClass("Model").Blocks -- just set this as a variable so is cleanrer
+            local client = game.Players.LocalPlayer
+            game:GetService("RunService").Heartbeat:Connect(function()
+            if _G.AutoTP == false then return end
+            end)
+            while wait(1) do
+            if _G.AutoTP == false then return end
+            for i,v in pairs(islandBlockFolder:GetChildren()) do
+            if string.find(v.Name,_G.Item) then
+            repeat if _G.AutoTP == false then break end
+            pcall(function() -- Doesn't break the script if there is an error
+            client.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
+            end)
+            pcall(function()
+            game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged.CLIENT_BLOCK_HIT_REQUEST:InvokeServer({["player_tracking_category"] = "join_from_web",["part"] = v:FindFirstChildOfClass("MeshPart"),["block"] = v,["norm"] = v.CFrame, ["pos"] = v.CFrame})
+            end)
+            until not v or v.Parent == nil or _G.AutoTP == false
+            plr = game.Players.LocalPlayer
+            mouse = plr:GetMouse()
+            mouse.KeyDown:connect(function(key)  
+            if key == "'" then
+            _G.AutoTP = false
+            _G.AutoTools = false
+            _G.DisableXP = false
+            end
+            end)
+            end
+            end
+            end
+            end
+            end)
+        end
+    end)
+
+    spawn (function()
+        if _G.RejoinWhenKick == true then wait()
+            local Dir = game.CoreGui:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
+            Dir.DescendantAdded:Connect(function(Err)
+            if Err.Name == "ErrorTitle" then
+            Err:GetPropertyChangedSignal("Text"):Connect(function()
+            if Err.Text:sub(0, 12) == "Disconnected" then
+            if #game.Players:GetPlayers() <= 1 then
+            game.Players.LocalPlayer:Kick("\nRejoining...")
+            wait()
+            game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+            else
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+            end
+            end
+            end)
+            end
+            end)
+        end
+    end)
+
+    spawn (function()
+        if _G.AntiAFK == true then wait()
+            local VirtualUser=game:service'VirtualUser'
+            game:service'Players'.LocalPlayer.Idled:connect(function()
+            VirtualUser:CaptureController()
+            VirtualUser:ClickButton2(Vector2.new())
+            end)
+        end
+    end)
+
+    spawn (function()
+        while _G.AutoKick == true do
+        local TpService = game:GetService("TeleportService")
+        local player = game.Players.LocalPlayer
+        
+        if game.placeId == 4872321990 then
+        wait(7200)
+            TpService:Teleport(7620160503,player)
+        end
+
+        if game.placeId == 7620160503 then
+        wait(60)
+            TpService:Teleport(4872321990,player)
+        end
+        end
+    end)
+
+    spawn (function()
+        if _G.LowGraphics == true then wait(180)
+        local decalsyeeted = true
+        local g = game
+        local w = g.Workspace
+        local l = g.Lighting
+        local t = w.Terrain
+        t.WaterWaveSize = 0
+        t.WaterWaveSpeed = 0
+        t.WaterReflectance = 0
+        t.WaterTransparency = 0
+        l.GlobalShadows = false
+        l.FogEnd = 9e9
+        l.Brightness = 0
+        settings().Rendering.QualityLevel = "Level01"
+        for i, v in pairs(g:GetDescendants()) do
+            if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+            elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+            v.Transparency = 1
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+            v.Lifetime = NumberRange.new(0)
+        elseif v:IsA("Explosion") then
+            v.BlastPressure = 1
+            v.BlastRadius = 1
+        elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+            v.Enabled = false
+        elseif v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+            v.TextureID = 10385902758728957
+            end
+        end
+        for i, e in pairs(l:GetChildren()) do
+            if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                e.Enabled = false
+            end
+        end
+        end
+    end)
