@@ -27,6 +27,7 @@ spawn (function()
         local character = player.Character or player.CharacterAdded:Wait()
         player = game.Players.LocalPlayer
         character = player.Character
+        while true do
         if noclip then
         for _, v in pairs(character:GetDescendants()) do
         pcall(function()
@@ -37,6 +38,7 @@ spawn (function()
         end
         end
         game:GetService("RunService").Stepped:wait()
+        end
         end)
 
         spawn (function()
@@ -130,7 +132,7 @@ spawn (function()
     plr = game.Players.LocalPlayer
     mouse = plr:GetMouse()
     mouse.KeyDown:connect(function(key)  
-    if key == "0" then
+    if key == "p" then
     _G.AutoTP = false
     _G.AutoTools = false
     _G.DisableXP = false
