@@ -33,13 +33,12 @@ spawn (function()
     end)
 
     spawn (function()
-    if _G.Noclip == true then
     local noclip = true
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
     player = game.Players.LocalPlayer
     character = player.Character
-    while true do
+    while _G.Noclip == true do
     if noclip then
     for _, v in pairs(character:GetDescendants()) do
     pcall(function()
@@ -51,7 +50,7 @@ spawn (function()
     end
     game:GetService("RunService").Stepped:wait()
     end
-    end
+    end)
     end)
 
     spawn (function()
