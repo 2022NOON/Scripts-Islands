@@ -1,8 +1,8 @@
-_G.AutoMaple = true
 _G.LowGraphics = true
 _G.AutoTP = true
 _G.AutoTools = true
 _G.DisableXP = true
+_G.Noclip = true
 
 spawn (function()
     wait(7200)
@@ -17,26 +17,8 @@ spawn (function()
     _G.AutoTP = false
     _G.AutoTools = false
     _G.DisableXP = false
+    _G.Noclip = false
     _G.LowGraphics = false
-    spawn (function()
-    local noclip = true
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    player = game.Players.LocalPlayer
-    character = player.Character
-    while true do wait()
-    if noclip then
-    for _, v in pairs(character:GetDescendants()) do
-    pcall(function()
-    if v:IsA("BasePart") then
-    v.CanCollide = true
-    end
-    end)
-    end
-    end
-    end
-    game:GetService("RunService").Stepped:wait()
-    end)
     end
     end)
 end)
@@ -51,6 +33,7 @@ spawn (function()
     end)
 
     spawn (function()
+    if _G.Noclip == true then
     local noclip = true
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
@@ -67,6 +50,7 @@ spawn (function()
     end
     end
     game:GetService("RunService").Stepped:wait()
+    end
     end
     end)
 
@@ -149,4 +133,3 @@ spawn (function()
     end
     end
 end)
-
