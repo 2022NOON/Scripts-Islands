@@ -13,12 +13,26 @@ spawn (function()
     plr = game.Players.LocalPlayer
     mouse = plr:GetMouse()
     mouse.KeyDown:connect(function(key)
-    if key:lower() == "l" then
+    if key:lower() == "p" then
     _G.AutoTP = false
     _G.AutoTools = false
     _G.DisableXP = false
     _G.Noclip = false
     _G.LowGraphics = false
+    end
+    end)
+end)
+
+spawn (function()
+    plr = game.Players.LocalPlayer
+    mouse = plr:GetMouse()
+    mouse.KeyDown:connect(function(key)
+    if key:lower() == "m" then
+    _G.AutoTP = true
+    _G.AutoTools = true
+    _G.DisableXP = true
+    _G.Noclip = true
+    _G.LowGraphics = true
     end
     end)
 end)
