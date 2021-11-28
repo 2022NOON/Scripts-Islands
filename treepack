@@ -121,7 +121,7 @@ spawn (function()
     plr = game.Players.LocalPlayer
     mouse = plr:GetMouse()
     mouse.KeyDown:connect(function(key)
-    if key == "l" then
+    if key:lower() == "l" then
     _G.LowGraphics = false
     _G.AutoMaple = false
     local noclip = true
