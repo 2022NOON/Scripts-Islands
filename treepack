@@ -1,5 +1,4 @@
 _G.AutoMaple = true
-_G.RejoinWhenKick = true
 _G.AntiAFK = true
 _G.LowGraphics = true
 
@@ -26,7 +25,6 @@ spawn (function()
         local noclip = true
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
-        while true do
         player = game.Players.LocalPlayer
         character = player.Character
         if noclip then
@@ -39,7 +37,6 @@ spawn (function()
         end
         end
         game:GetService("RunService").Stepped:wait()
-        end
         end)
 
         spawn (function()
@@ -69,39 +66,9 @@ spawn (function()
         game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged.CLIENT_BLOCK_HIT_REQUEST:InvokeServer({["player_tracking_category"] = "join_from_web",["part"] = v:FindFirstChildOfClass("MeshPart"),["block"] = v,["norm"] = v.CFrame, ["pos"] = v.CFrame})
         end)
         until not v or v.Parent == nil or _G.AutoTP == false
-        plr = game.Players.LocalPlayer
-        mouse = plr:GetMouse()
-        mouse.KeyDown:connect(function(key)  
-        if key == "'" then
-        _G.AutoTP = false
-        _G.AutoTools = false
-        _G.DisableXP = false
-        end
-        end)
         end
         end
         end
-        end
-        end)
-    end
-end)
-
-spawn (function()
-    if _G.RejoinWhenKick == true then wait()
-        local Dir = game.CoreGui:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
-        Dir.DescendantAdded:Connect(function(Err)
-        if Err.Name == "ErrorTitle" then
-        Err:GetPropertyChangedSignal("Text"):Connect(function()
-        if Err.Text:sub(0, 12) == "Disconnected" then
-        if #game.Players:GetPlayers() <= 1 then
-        game.Players.LocalPlayer:Kick("\nRejoining...")
-        wait()
-        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
-        else
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
-        end
-        end
-        end)
         end
         end)
     end
@@ -118,7 +85,7 @@ spawn (function()
 end)
 
 spawn (function()
-    if _G.LowGraphics == true then wait(25)
+    if _G.LowGraphics == true then wait(30)
     local decalsyeeted = true
     local g = game
     local w = g.Workspace
@@ -157,4 +124,36 @@ spawn (function()
         end
     end
     end
+end)
+
+spawn (function()
+    plr = game.Players.LocalPlayer
+    mouse = plr:GetMouse()
+    mouse.KeyDown:connect(function(key)  
+    if key == "0" then
+    _G.AutoTP = false
+    _G.AutoTools = false
+    _G.DisableXP = false
+    spawn (function()
+    local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    player = game.Players.LocalPlayer
+    character = player.Character
+    if noclip then
+    for _, v in pairs(character:GetDescendants()) do
+    pcall(function()
+    if v:IsA("BasePart") then
+    v.CanCollide = true
+    end
+    end)
+    end
+    end
+    game:GetService("RunService").Stepped:wait()
+    end)
+    spawn (function()
+    game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)   
+    end)
+    end
+    end)
 end)
