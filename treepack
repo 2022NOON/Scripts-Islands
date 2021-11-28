@@ -87,7 +87,37 @@ spawn (function()
 end)
 
 spawn (function()
-    if _G.LowGraphics == true then wait(30)
+    plr = game.Players.LocalPlayer
+    mouse = plr:GetMouse()
+    mouse.KeyDown:connect(function(key)  
+    if key == "0" then
+    _G.LowGraphics = false
+    _G.AutoTP = false
+    _G.AutoTools = false
+    _G.DisableXP = false
+    print("stopped") end
+    spawn (function()
+    local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    player = game.Players.LocalPlayer
+    character = player.Character
+    if noclip then
+    for _, v in pairs(character:GetDescendants()) do
+    pcall(function()
+    if v:IsA("BasePart") then
+    v.CanCollide = true
+    end
+    end)
+    end
+    end
+    game:GetService("RunService").Stepped:wait()
+    end)
+    end)
+end)
+
+spawn (function()
+    if _G.LowGraphics == true then wait(120)
     local decalsyeeted = true
     local g = game
     local w = g.Workspace
@@ -126,36 +156,4 @@ spawn (function()
         end
     end
     end
-end)
-
-spawn (function()
-    plr = game.Players.LocalPlayer
-    mouse = plr:GetMouse()
-    mouse.KeyDown:connect(function(key)  
-    if key == "p" then
-    _G.AutoTP = false
-    _G.AutoTools = false
-    _G.DisableXP = false
-    spawn (function()
-    local noclip = true
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    player = game.Players.LocalPlayer
-    character = player.Character
-    if noclip then
-    for _, v in pairs(character:GetDescendants()) do
-    pcall(function()
-    if v:IsA("BasePart") then
-    v.CanCollide = true
-    end
-    end)
-    end
-    end
-    game:GetService("RunService").Stepped:wait()
-    end)
-    spawn (function()
-    game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)   
-    end)
-    end
-    end)
 end)
