@@ -1,5 +1,8 @@
 _G.AutoMaple = true
 _G.LowGraphics = true
+_G.AutoTP = true
+_G.AutoTools = true
+_G.DisableXP = true
 
 spawn (function()
     wait(7200)
@@ -7,72 +10,94 @@ spawn (function()
 end)
 
 spawn (function()
-    if _G.AutoMaple == true then wait()            
-        _G.AutoTP = true
-        _G.AutoTools = true
-        _G.DisableXP = true
-
-        spawn (function()
-        if _G.DisableXP == true then
-        game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = true
-        else
-        game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = false
-        end
-        end)
-
-        spawn (function()
-        local noclip = true
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        player = game.Players.LocalPlayer
-        character = player.Character
-        while true do
-        if noclip then
-        for _, v in pairs(character:GetDescendants()) do
-        pcall(function()
-        if v:IsA("BasePart") then
-        v.CanCollide = false
-        end
-        end)
-        end
-        end
-        game:GetService("RunService").Stepped:wait()
-        end
-        end)
-
-        spawn (function()
-        while _G.AutoTools == true do wait()
-        if game.Players.LocalPlayer.Backpack:FindFirstChild("opalAxe") then
-        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["opalAxe"])
-        end 
-        end
-        end)
-        spawn (function()
-        while _G.AutoTP == true do
-        _G.Item = "treeMaple"
-        local islandBlockFolder = game:GetService("Workspace").Islands:FindFirstChildOfClass("Model").Blocks -- just set this as a variable so is cleanrer
-        local client = game.Players.LocalPlayer
-        game:GetService("RunService").Heartbeat:Connect(function()
-        if _G.AutoTP == false then return end
-        end)
-        while wait(1) do
-        if _G.AutoTP == false then return end
-        for i,v in pairs(islandBlockFolder:GetChildren()) do
-        if string.find(v.Name,_G.Item) then
-        repeat if _G.AutoTP == false then break end
-        pcall(function() -- Doesn't break the script if there is an error
-        client.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
-        end)
-        pcall(function()
-        game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged.CLIENT_BLOCK_HIT_REQUEST:InvokeServer({["player_tracking_category"] = "join_from_web",["part"] = v:FindFirstChildOfClass("MeshPart"),["block"] = v,["norm"] = v.CFrame, ["pos"] = v.CFrame})
-        end)
-        until not v or v.Parent == nil or _G.AutoTP == false
-        end
-        end
-        end
-        end
-        end)
+    plr = game.Players.LocalPlayer
+    mouse = plr:GetMouse()
+    mouse.KeyDown:connect(function(key)
+    if key:lower() == "l" then
+    _G.AutoTP = false
+    _G.AutoTools = false
+    _G.DisableXP = false
+    _G.LowGraphics = false
+    local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    player = game.Players.LocalPlayer
+    character = player.Character
+    if noclip then
+    for _, v in pairs(character:GetDescendants()) do
+    pcall(function()
+    if v:IsA("BasePart") then
+    v.CanCollide = true
     end
+    end)
+    end
+    end
+    game:GetService("RunService").Stepped:wait()
+    end
+    end)
+end)
+
+spawn (function()
+    spawn (function()
+    if _G.DisableXP == true then
+    game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = true
+    else
+    game.Players.LocalPlayer.PlayerScripts.TS.modules.experience["experience-listener"].Disabled = false
+    end
+    end)
+
+    spawn (function()
+    local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    player = game.Players.LocalPlayer
+    character = player.Character
+    while true do
+    if noclip then
+    for _, v in pairs(character:GetDescendants()) do
+    pcall(function()
+    if v:IsA("BasePart") then
+    v.CanCollide = false
+    end
+    end)
+    end
+    end
+    game:GetService("RunService").Stepped:wait()
+    end
+    end)
+
+    spawn (function()
+    while _G.AutoTools == true do wait()
+    if game.Players.LocalPlayer.Backpack:FindFirstChild("opalAxe") then
+    game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["opalAxe"])
+    end 
+    end
+    end)
+    spawn (function()
+    while _G.AutoTP == true do
+    _G.Item = "treeMaple"
+    local islandBlockFolder = game:GetService("Workspace").Islands:FindFirstChildOfClass("Model").Blocks -- just set this as a variable so is cleanrer
+    local client = game.Players.LocalPlayer
+    game:GetService("RunService").Heartbeat:Connect(function()
+    if _G.AutoTP == false then return end
+    end)
+    while wait(1) do
+    if _G.AutoTP == false then return end
+    for i,v in pairs(islandBlockFolder:GetChildren()) do
+    if string.find(v.Name,_G.Item) then
+    repeat if _G.AutoTP == false then break end
+    pcall(function() -- Doesn't break the script if there is an error
+    client.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
+    end)
+    pcall(function()
+    game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged.CLIENT_BLOCK_HIT_REQUEST:InvokeServer({["player_tracking_category"] = "join_from_web",["part"] = v:FindFirstChildOfClass("MeshPart"),["block"] = v,["norm"] = v.CFrame, ["pos"] = v.CFrame})
+    end)
+    until not v or v.Parent == nil or _G.AutoTP == false
+    end
+    end
+    end
+    end
+    end)
 end)
 
 spawn (function()
@@ -117,28 +142,3 @@ spawn (function()
     end
 end)
 
-spawn (function()
-    plr = game.Players.LocalPlayer
-    mouse = plr:GetMouse()
-    mouse.KeyDown:connect(function(key)
-    if key:lower() == "l" then
-    _G.LowGraphics = false
-    _G.AutoMaple = false
-    local noclip = true
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    player = game.Players.LocalPlayer
-    character = player.Character
-    if noclip then
-    for _, v in pairs(character:GetDescendants()) do
-    pcall(function()
-    if v:IsA("BasePart") then
-    v.CanCollide = true
-    end
-    end)
-    end
-    end
-    game:GetService("RunService").Stepped:wait()
-    end
-    end)
-end)
