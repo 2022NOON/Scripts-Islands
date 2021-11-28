@@ -1,10 +1,37 @@
 _G.AutoMaple = true
-_G.AntiAFK = true
 _G.LowGraphics = true
 
 spawn (function()
-wait(7200)
-game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
+    wait(7200)
+    game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
+end)
+
+spawn (function()
+    plr = game.Players.LocalPlayer
+    mouse = plr:GetMouse()
+    mouse.KeyDown:connect(function(key)  
+    if key == "0" then
+    _G.LowGraphics = false
+    _G.AutoMaple = false
+    print("stopped") end
+    spawn (function()
+    local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    player = game.Players.LocalPlayer
+    character = player.Character
+    if noclip then
+    for _, v in pairs(character:GetDescendants()) do
+    pcall(function()
+    if v:IsA("BasePart") then
+    v.CanCollide = true
+    end
+    end)
+    end
+    end
+    game:GetService("RunService").Stepped:wait()
+    end)
+    end)
 end)
 
 spawn (function()
@@ -74,46 +101,6 @@ spawn (function()
         end
         end)
     end
-end)
-
-spawn (function()
-    if _G.AntiAFK == true then wait()
-        local VirtualUser=game:service'VirtualUser'
-        game:service'Players'.LocalPlayer.Idled:connect(function()
-        VirtualUser:CaptureController()
-        VirtualUser:ClickButton2(Vector2.new())
-        end)
-    end
-end)
-
-spawn (function()
-    plr = game.Players.LocalPlayer
-    mouse = plr:GetMouse()
-    mouse.KeyDown:connect(function(key)  
-    if key == "0" then
-    _G.LowGraphics = false
-    _G.AutoTP = false
-    _G.AutoTools = false
-    _G.DisableXP = false
-    print("stopped") end
-    spawn (function()
-    local noclip = true
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    player = game.Players.LocalPlayer
-    character = player.Character
-    if noclip then
-    for _, v in pairs(character:GetDescendants()) do
-    pcall(function()
-    if v:IsA("BasePart") then
-    v.CanCollide = true
-    end
-    end)
-    end
-    end
-    game:GetService("RunService").Stepped:wait()
-    end)
-    end)
 end)
 
 spawn (function()
