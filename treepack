@@ -105,7 +105,11 @@ spawn (function()
 end)
 
 spawn (function()
-    if _G.LowGraphics == true then wait(120)
+    if _G.LowGraphics == true then
+    else if _G.LowGraphics == false then
+    print("its false!")
+    end
+    wait(120)
     local decalsyeeted = true
     local g = game
     local w = g.Workspace
