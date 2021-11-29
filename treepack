@@ -102,6 +102,7 @@ spawn (function()
 
 spawn (function()
     if _G.LowGraphics == true then
+    while _G.LowGraphics == false do wait() break end
     wait(120)
     local decalsyeeted = true
     local g = game
@@ -138,10 +139,6 @@ spawn (function()
     for i, e in pairs(l:GetChildren()) do
         if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
             e.Enabled = false
-    else
-        if _G.LowGraphics == false then
-        print("its false!")
-        end
         end
     end
     end
