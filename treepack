@@ -52,7 +52,7 @@ spawn (function()
     local character = player.Character or player.CharacterAdded:Wait()
     player = game.Players.LocalPlayer
     character = player.Character
-    while _G.Noclip == true do wait()
+    while _G.Noclip == true do
     if noclip then
     for _, v in pairs(character:GetDescendants()) do
     pcall(function()
