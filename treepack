@@ -27,7 +27,7 @@ spawn (function()
     plr = game.Players.LocalPlayer
     mouse = plr:GetMouse()
     mouse.KeyDown:connect(function(key)
-    if key:lower() == "m" then
+    while key:lower() == "m" do wait()
     _G.AutoTP = true
     _G.AutoTools = true
     _G.DisableXP = true
@@ -52,7 +52,7 @@ spawn (function()
     local character = player.Character or player.CharacterAdded:Wait()
     player = game.Players.LocalPlayer
     character = player.Character
-    while _G.Noclip == true do
+    while _G.Noclip == true do wait()
     if noclip then
     for _, v in pairs(character:GetDescendants()) do
     pcall(function()
