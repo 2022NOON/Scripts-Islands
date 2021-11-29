@@ -30,7 +30,4 @@ end
 if game.placeId == 5899156129 then wait(3600)
 game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
 end
-if game.placeId == 7620160503 then
-game:GetService("TeleportService"):Teleport(4872321990,game.Players.LocalPlayer)
-end
 end)
