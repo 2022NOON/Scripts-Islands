@@ -1,4 +1,11 @@
 spawn (function()
+local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+
+spawn (function()
 local Dir = game.CoreGui:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
 Dir.DescendantAdded:Connect(function(Err)
 if Err.Name == "ErrorTitle" then
