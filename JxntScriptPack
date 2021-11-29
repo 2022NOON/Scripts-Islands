@@ -15,7 +15,7 @@ loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogus
 end)
 
 spawn (function()
-while _G.AutoTools == true do wait()
+while _G.AutoTools == true do 
 if game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") then
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"])
 end
@@ -27,6 +27,6 @@ if game.placeId == 4872321990 then
 game:GetService("TeleportService"):Teleport(5899156129,game.Players.LocalPlayer)
 end
 if game.placeId == 5899156129 then wait(7200)
-game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
+game:GetService("TeleportService"):Teleport(4872321990,game.Players.LocalPlayer)
 end
 end)
