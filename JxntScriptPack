@@ -18,13 +18,13 @@ spawn (function()
         end)
 
         spawn (function()
-        loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))()
+        repeat wait() until loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))():IsLoaded()
         end)
 
         spawn (function()
         while _G.AutoTools == true do wait()
         if game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") then
-        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"])
+        repeat wait() until game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"]):IsLoaded()
         end
         end
         end)
