@@ -25,6 +25,7 @@ spawn (function()
         while _G.AutoTools == true do wait()
         if game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") then
         repeat wait() until game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"]):IsLoaded()
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"])
         end
         end
         end)
