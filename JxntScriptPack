@@ -1,5 +1,5 @@
 spawn (function()
-    if game.placeId == 5899156129 then
+    if game.placeId == 5899156129 then wait(30)
         _G.AutoTools = true
 
         spawn (function()
@@ -32,7 +32,7 @@ spawn (function()
 end)
 
 spawn (function()
-if game.placeId == 4872321990 then
-game:GetService("TeleportService"):Teleport(5899156129,game.Players.LocalPlayer)
-end
+    if game.placeId == 4872321990 then
+    game:GetService("TeleportService"):Teleport(5899156129,game.Players.LocalPlayer)
+    end
 end)
