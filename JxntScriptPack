@@ -1,32 +1,38 @@
-_G.AutoTools = true
-
 spawn (function()
-plr = game.Players.LocalPlayer
-mouse = plr:GetMouse()
-mouse.KeyDown:connect(function(key)
-if key:lower() == "p" then
-_G.AutoTools = false
-end
-end)
-end)
+    if game.placeId == 5899156129 then
+        _G.AutoTools = true
 
-spawn (function()
-loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))()
-end)
+        spawn (function()
+        wait(1800)
+        game:GetService("TeleportService"):Teleport(4872321990,game.Players.LocalPlayer)
+        end)
 
-spawn (function()
-while _G.AutoTools == true do wait()
-if game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") then
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"])
-end
-end
+        spawn (function()
+        plr = game.Players.LocalPlayer
+        mouse = plr:GetMouse()
+        mouse.KeyDown:connect(function(key)
+        if key:lower() == "p" then
+        _G.AutoTools = false
+        end
+        end)
+        end)
+
+        spawn (function()
+        loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))()
+        end)
+
+        spawn (function()
+        while _G.AutoTools == true do wait()
+        if game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") then
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"])
+        end
+        end
+        end)
+    end
 end)
 
 spawn (function()
 if game.placeId == 4872321990 then
 game:GetService("TeleportService"):Teleport(5899156129,game.Players.LocalPlayer)
-end
-if game.placeId == 5899156129 then wait(1800)
-game:GetService("TeleportService"):Teleport(4872321990,game.Players.LocalPlayer)
 end
 end)
