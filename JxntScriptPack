@@ -26,7 +26,7 @@ spawn (function()
 if game.placeId == 4872321990 then
 game:GetService("TeleportService"):Teleport(5899156129,game.Players.LocalPlayer)
 end
-if game.placeId == 5899156129 then wait(7200)
+if game.placeId == 5899156129 then wait(1800)
 game:GetService("TeleportService"):Teleport(4872321990,game.Players.LocalPlayer)
 end
 end)
