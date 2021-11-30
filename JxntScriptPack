@@ -1,5 +1,5 @@
 spawn (function()
-    if game.placeId == 5899156129 then wait(30)
+    if game.placeId == 5899156129 then wait()
         _G.AutoTools = true
 
         spawn (function()
@@ -18,15 +18,15 @@ spawn (function()
         end)
 
         spawn (function()
-        repeat wait() until loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))():IsLoaded()
+        repeat wait() until game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") == true
+        loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))()
         end)
 
         spawn (function()
+        repeat wait() until game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") == true 
         while _G.AutoTools == true do wait()
-        if loadstring(game:HttpGet("https://system-exodus.com/scripts/Islands/thisdoeslogusernamesbtw.lua", true))():IsLoaded() == true then
         if game.Players.LocalPlayer.Backpack:FindFirstChild("rageblade") then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["rageblade"])
-        end
         end
         end
         end)
