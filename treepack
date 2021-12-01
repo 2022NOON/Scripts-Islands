@@ -1,6 +1,6 @@
 _G.AutoTP = true
 _G.AutoTools = true
-_G.DisableXP = true
+_G.DisableXP = false
 _G.Noclip = true
 
 spawn (function()
