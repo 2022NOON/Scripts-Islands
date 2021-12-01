@@ -73,7 +73,7 @@ spawn (function()
     end)
     spawn (function()
     while _G.AutoTP == true do
-    _G.Item = "treeMaple"
+    _G.Item = "tree"
     local islandBlockFolder = game:GetService("Workspace").Islands:FindFirstChildOfClass("Model").Blocks -- just set this as a variable so is cleanrer
     local client = game.Players.LocalPlayer
     game:GetService("RunService").Heartbeat:Connect(function()
