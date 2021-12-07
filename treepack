@@ -1,10 +1,10 @@
 _G.AutoTP = true
 _G.AutoTools = true
-_G.DisableXP = false
+_G.DisableXP = true
 _G.Noclip = true
 
 spawn (function()
-    wait(7200)
+    wait(3600)
     game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
 end)
 
@@ -68,18 +68,18 @@ spawn (function()
     while _G.AutoTools == true do wait()
     if game.Players.LocalPlayer.Backpack:FindFirstChild("opalAxe") then
     game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["opalAxe"])
-    end 
+    end
     end
     end)
     spawn (function()
     while _G.AutoTP == true do
-    _G.Item = "tree"
+    _G.Item = "treeMaple"
     local islandBlockFolder = game:GetService("Workspace").Islands:FindFirstChildOfClass("Model").Blocks -- just set this as a variable so is cleanrer
     local client = game.Players.LocalPlayer
     game:GetService("RunService").Heartbeat:Connect(function()
     if _G.AutoTP == false then return end
     end)
-    while wait(1) do
+    while wait() do
     if _G.AutoTP == false then return end
     for i,v in pairs(islandBlockFolder:GetChildren()) do
     if string.find(v.Name,_G.Item) then
