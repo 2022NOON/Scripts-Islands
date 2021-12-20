@@ -4,7 +4,7 @@ _G.DisableXP = true
 _G.Noclip = true
 
 spawn (function()
-    wait(3600)
+    wait(7200)
     game:GetService("TeleportService"):Teleport(7620160503,game.Players.LocalPlayer)
 end)
 
