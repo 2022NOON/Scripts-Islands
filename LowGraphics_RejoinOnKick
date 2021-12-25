@@ -3,7 +3,7 @@ local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 VirtualUser:CaptureController()
 VirtualUser:ClickButton2(Vector2.new())
-end)
+end) end)
 
 spawn (function()
 local Dir = game.CoreGui:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
@@ -17,9 +17,4 @@ wait()
 game:GetService("TeleportService"):Teleport(7620160503 , game.Players.LocalPlayer)
 else
 game:GetService("TeleportService"):TeleportToPlaceInstance(7620160503 , game.Players.LocalPlayer)
-end
-end
-end)
-end
-end)
-end)
+end end end) end end) end)
